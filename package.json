@@ -1,0 +1,24 @@
+{
+  "name": "Blog",
+  "version": "1.0.0",
+  "description": "Blog Object",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoursOwen/Blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YoursOwen/Blog/issues"
+  },
+  "homepage": "https://github.com/YoursOwen/Blog#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}
