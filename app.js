@@ -2,6 +2,8 @@ const express = require("express")
 const app = express()
 const ejs = require("ejs")
 
+app.use("/node_modules",express.static("./node_modules"))
+
 app.set('view engine', 'ejs')
 
 app.get("/",(req,res)=>{
