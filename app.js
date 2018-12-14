@@ -1,13 +1,13 @@
 const express = require("express")
 const app = express()
-const ejs = require("ejs")
+// const ejs = require("ejs")
 
 app.use("/node_modules",express.static("./node_modules"))
 
 app.set('view engine', 'ejs')
 
 app.get("/",(req,res)=>{
-    res.render("index",{})
+    res.render("index",{name:"zs",age:"14"})
 })
 
 app.listen(80,()=>{  //默认80端口 Url栏不显示
