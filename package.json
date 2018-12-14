@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/YoursOwen/Blog#readme",
   "dependencies": {
+    "bootstrap": "^4.1.3",
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "jquery": "^3.3.1"
   }
 }
