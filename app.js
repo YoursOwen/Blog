@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
-
+const fs = require("fs")
+const path = require("path")
 const bodyParser = require('body-parser')
 
 
@@ -13,10 +14,17 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 //ejs初始化
 app.set('view engine', 'ejs')
-const router1 = require("./router/index")
-app.use(router1)
-const router2 = require("./router/user")
-app.use(router2)
+
+//自动加载路由模块
+//使用fs模块读取router文件下的所有文件名
+fs.readdir("./router",(err,filename)=>{
+    if(err) return console.log(err,message)
+    filename.forEach(item => {
+        const filePath = path.join(__dirname,"./router",item)
+        const router = require(filePath)
+        app.use(router)
+    })
+})
 
 
 app.listen(80,()=>{  //默认80端口 Url栏不显示
