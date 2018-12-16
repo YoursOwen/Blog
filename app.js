@@ -31,6 +31,7 @@ fs.readdir("./router",(err,filename)=>{
         const filePath = path.join(__dirname,"./router",item)
         const router = require(filePath)
         app.use(router)
+        console.log(item)
     })
 })
 
