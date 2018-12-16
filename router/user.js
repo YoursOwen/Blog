@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const ctrl = require('../controller')
+const ctrl = require('../controller/user')
 
 //注册页路由
 router.get("/register",ctrl.getRegisterHandler)

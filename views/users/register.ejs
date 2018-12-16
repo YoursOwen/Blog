@@ -56,10 +56,13 @@
                 url:"/register",
                 data,
                 success:function(res) {
-                   console.log(res) 
-                   setTimeout(() => {
+                   if(res.status) {
+                      alert(res.msg)
+                    setTimeout(() => {
                     location.href = "http://127.0.0.1/login"
                    }, 2000);
+                   }
+                   
                 }
             })
 

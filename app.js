@@ -3,6 +3,14 @@ const app = express()
 const fs = require("fs")
 const path = require("path")
 const bodyParser = require('body-parser')
+const session = require('express-session')
+//主要注册了session中间件，那么就可以访问到req.session
+app.use(session({
+    secret: 'mySession',
+    cookie: { maxAge: 3600 *24 * 15 },
+    resave: false,
+    saveUninitialized: false,
+  }))
 
 
 

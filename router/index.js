@@ -2,7 +2,7 @@
 //对于路由模块来说，只需要分配url到处理函数之间的关系即可
 const express = require("express")
 const router = express.Router()
-const ctrl = require('../controller')
+const ctrl = require('../controller/index')
 
 //主页
 router.get("/",ctrl.getIndex)

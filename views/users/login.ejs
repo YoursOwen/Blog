@@ -55,9 +55,12 @@
                 url:"/login",
                 data,
                 success:function(res) {
-                  setTimeout(() => {
+                  if(res.status == 300) {
+                    alert(res.msg)
+                    setTimeout(() => {
                     location.href = "http://127.0.0.1:80"
                   }, 2000);
+                  }
                 }
             })
 
