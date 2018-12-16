@@ -6,5 +6,8 @@ const ctrl = require('../controller/index')
 
 //主页
 router.get("/",ctrl.getIndex)
+
+router.get("/logout",ctrl.getLogout)
 module.exports = router
+
 

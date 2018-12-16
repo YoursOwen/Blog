@@ -15,4 +15,14 @@
              })
           })
       })
+
+          $("#logout").on("click",function(){
+              $.ajax({
+                  type:'get',
+                  url:'/logout',
+                  success:(res) => {
+                    console.log(res)
+                  }
+              })
+          })
   </script>
