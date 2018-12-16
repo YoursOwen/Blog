@@ -1,0 +1,5 @@
+业务逻辑的抽取:
+    1.命名风格：约定大于配置 handle(处理)
+        getIndexHandler
+
+MVC:就是分层开发  M model 数据模型层  V view 视图层  C controll 逻辑层 

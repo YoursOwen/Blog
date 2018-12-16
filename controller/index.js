@@ -1,12 +1,11 @@
 const conn = require('../db')
 const moment = require("moment")
 
-
 module.exports = {
-    register (req,res) {
+    getRegisterHandler (req,res) {
         res.render("./users/register",{})    
     },
-    getRegister (req,res) {
+    postRegisterHandler (req,res) {
         const data = req.body
     
         //验证表单数据的合法性
@@ -30,10 +29,10 @@ module.exports = {
           });
         
     },
-    login (req,res) {
+    getLoginHandler (req,res) {
         res.render("./users/login",{})
     },
-    makeLogin (req,res) {
+    postLoginHandler (req,res) {
         const data = req.body
         const sqlStr = "select count(*) as c from user where username= ? and password= ? "
         conn.query(sqlStr,[data.username,data.password],(error, results)=>{
@@ -44,7 +43,7 @@ module.exports = {
             });     
     
     },
-    index (req,res) {
+    getIndex (req,res) {
         res.render("index",{name:"zs",age:"14"})
     }
 }
