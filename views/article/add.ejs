@@ -17,7 +17,7 @@
     </div>
 
     <div class="form-group">
-        <input type="submit" value="发表文章" class="btn btn-primary">
+        <input type="submit" value="发表文章" class="btn btn-primary" id='art_submit'>
     </div>
     </form>
 </div>
@@ -28,9 +28,21 @@
     var mditor =  Mditor.fromTextarea(document.getElementById('editor'));
     //获取或设置编辑器的值
     mditor.on('ready',function(){
-    console.log(mditor.value);
     mditor.value = '** hello **';	
     });
+    $("#art_submit").on('click',()=>{
+        $.ajax({
+            type:"post",
+            url:'',
+            data:$("#form").serialize(),
+            success:(res) => {
+                if(res.status == 200) {
+                    location.href = ""
+                }
+            }
+        })
+        return false
+    })
 </script>
 
 

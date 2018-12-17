@@ -4,10 +4,12 @@ const fs = require("fs")
 const path = require("path")
 const bodyParser = require('body-parser')
 const session = require('express-session')
+const cookieParser = require('cookie-parser');
+app.use(cookieParser('sessiontest'))
 //主要注册了session中间件，那么就可以访问到req.session
 app.use(session({
-    secret: 'mySession',
-    cookie: { maxAge: 3600 *24 * 15 },
+    secret: 'sessiontest',
+    cookie: { maxAge: 60 * 60 *24 * 15 *1000 },
     resave: false,
     saveUninitialized: false,
   }))
@@ -31,7 +33,6 @@ fs.readdir("./router",(err,filename)=>{
         const filePath = path.join(__dirname,"./router",item)
         const router = require(filePath)
         app.use(router)
-        console.log(item)
     })
 })
 

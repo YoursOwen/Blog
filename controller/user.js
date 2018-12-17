@@ -34,15 +34,17 @@ module.exports = {
     },
     postLoginHandler (req,res) {
         const data = req.body
-        const sqlStr = "select count(*) as c from user where username= ? and password= ? "
+        const sqlStr = "select * from user where username= ? and password= ? "
         conn.query(sqlStr,[data.username,data.password],(error, results)=>{
             
             if (error) return res.status("500").send({status:500,msg:error.message,data:null})
-            if(results[0].c == 0) return res.send({status:400,msg:"用户名或密码错误"})
+            if(results.length !== 1) return res.send({status:400,msg:"用户名或密码错误"})
             //挂载要在send之前,如果send在前，挂载会不生效
-            req.session.userInfo = data.username
+            req.session.userInfo = results[0]
             req.session.isLogin = true
+            // console.log( req.session.userInfo.username)
             res.send({status:300,msg:"登陆成功"})
-            });     
+            });
+            
     }   
 }
