@@ -1,5 +1,24 @@
 <%- include("./common/header.ejs")%>
+<!-- =表示纯文本渲染  -表示解析HTML标签后渲染,ejs这样的注释不会被解析,其他的会 -->  
 
+<div class="list-group container" style="margin: 10px auto;">
+    <% item.forEach(item =>{ %>
+        <a href="/article/info/<%=item.id%>" class="list-group-item">
+        <%= item.title%>
+        <span class="badge hidden-xs" style="background-color: #5bc0de;">发表时间：
+            <%= item.ctime%>
+        </span>
+      <span class="badge" style="background-color: #f0ad4e;">作者昵称：
+        <%= item.nickname%>
+    </span>
+    </a>
+    <% }) %>
+    
+   
+      
+   
+    
+  </div>
 
 
 

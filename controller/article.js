@@ -1,5 +1,6 @@
 var markdown = require( "markdown" ).markdown;
 const conn = require("../db")
+const moment = require('moment');
 
 module.exports = {
     getArticleAdd (req,res) {
@@ -13,6 +14,7 @@ module.exports = {
     postArticleAdd (req,res) {
         const data = req.body
         data.authorId = req.session.userInfo.id
+        data.ctime = moment().format('YYYY-MM-DD HH:mm:ss')
         const sqlStr = "insert into article set ?"
         conn.query(sqlStr,data,(err,results) => {
             if(err) return res.status(500).send({status:500,msg:"添加文章失败"})
@@ -53,7 +55,7 @@ module.exports = {
         })
     },
     postArticleEdit (req,res) {
-        console.log(req.params.id)
+        data.ctime = moment().format('YYYY-MM-DD HH:mm:ss')
         const sqlStr = "update article set ? where id = ?"
         conn.query(sqlStr,[req.body,req.params.id],(err,results) => {
             if(err) return res.status(500).send({status:500,msg:"编辑文章失败"+err.message})
