@@ -10,6 +10,6 @@ router.get("/article/info/:id",ctrl.getArticleInfo)
 
 router.get("/article/edit/:id",ctrl.getArticleEdit)
 
-// router.post("/article/edit/:id",ctrl.postArticleEdit)
+router.post("/article/edit/:id",ctrl.postArticleEdit)
 
 module.exports = router

@@ -44,7 +44,7 @@ module.exports = {
 
         conn.query(sqlStr,id,(err,results)=>{
             if(err) return res.status("500").send({status:500,msg:"文章信息获取失败"})
-            console.log(results[0],1)
+            
             res.render('./article/edit',{
                 articleInfo:results[0],
                 isLogin:req.session.isLogin,
@@ -53,14 +53,14 @@ module.exports = {
         })
     },
     postArticleEdit (req,res) {
-        const data = req.body
-        data.authorId = req.params
-        const sqlStr = "update into article set ?"
-        conn.query(sqlStr,data,(err,results) => {
-            if(err) return res.status(500).send({status:500,msg:"添加文章失败"})
-            res.send({status:200,msg:"添加文章成功",articleId:results.insertId})
+        console.log(req.params.id)
+        const sqlStr = "update article set ? where id = ?"
+        conn.query(sqlStr,[req.body,req.params.id],(err,results) => {
+            if(err) return res.status(500).send({status:500,msg:"编辑文章失败"+err.message})
+            res.send({status:200,msg:"编辑文章成功",articleId:req.params.id})
         })
     }
 
 
 }
+

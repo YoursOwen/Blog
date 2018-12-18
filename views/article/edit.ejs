@@ -33,13 +33,17 @@
     $("#art_submit").on('click',()=>{
         $.ajax({
             type:"post",
-            url:'/article/edit/:id',
+            //要传ID过去
+            url:'/article/edit/'+location.pathname.split("/").pop(),
             data:$("#form").serialize(),
             success:(res) => {
-                console.log(res)
+                console.log(res,res.articleId)
                 if(res.status == 200) {
                     location.href = '/article/info/'+ res.articleId
                 }
+            },
+            error:(res)=>{
+                console.log(res)
             }
         })
         return false
