@@ -20,11 +20,11 @@ module.exports = {
         })
     },
     getArticleInfo (req,res) {
-        const id = req.params
-        const sqlStr = "select * from article where ?"
+        const id = req.params.id
+        const sqlStr = "select * from article where id = ?"
         conn.query(sqlStr,id,(err,results)=>{
-            if(err) return res.status("500").send({status:500,msg:"文章信息获取失败"})
-            
+            if(err) return res.status("500").send({status:500,msg:"文章信息获取失败"+err.message})
+
             //用markdown将结果先转换好再传参
             let html = markdown.toHTML(results[0].content)
             results[0].content = html
@@ -36,5 +36,31 @@ module.exports = {
             })
         })
         
+    },
+    getArticleEdit (req,res) {
+        if(!req.session.isLogin) return res.redirect("/")
+        const id = req.params.id
+        const sqlStr = "select * from article where id = ?"
+
+        conn.query(sqlStr,id,(err,results)=>{
+            if(err) return res.status("500").send({status:500,msg:"文章信息获取失败"})
+            console.log(results[0],1)
+            res.render('./article/edit',{
+                articleInfo:results[0],
+                isLogin:req.session.isLogin,
+                userInfo:req.session.userInfo,
+            })
+        })
+    },
+    postArticleEdit (req,res) {
+        const data = req.body
+        data.authorId = req.params
+        const sqlStr = "update into article set ?"
+        conn.query(sqlStr,data,(err,results) => {
+            if(err) return res.status(500).send({status:500,msg:"添加文章失败"})
+            res.send({status:200,msg:"添加文章成功",articleId:results.insertId})
+        })
     }
+
+
 }

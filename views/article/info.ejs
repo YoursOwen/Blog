@@ -3,14 +3,28 @@
 <div class="container">
     <h1 class="text-center"><%= articleInfo.title %>
         <% if(isLogin && userInfo.id === articleInfo.authorId) { %>
-        <a href="#" class="btn btn-info pull-right">编辑</a>
+        <a href="/article/edit/<%= articleInfo.id %>" class="btn btn-info pull-right" id="btn-edit">编辑</a>
         <% } %>
     </h1>
     <hr>
 
     <div>
-        <p><%- articleInfo.content %></p>
+        <p><%- articleInfo.content%></p>
     </div>
 </div>
 
 <%- include("../common/footer") %>
+
+
+    $(function(){
+        $("#btn-edit").on("click",()=>{
+            $.ajax({
+                type:'get',
+                url:'/article/edit/:id',
+                success:(res) => {
+                    console.log(res)
+                }
+            })
+        })
+    })
+</script> -->
