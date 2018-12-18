@@ -1,5 +1,16 @@
 <%- include("../common/header") %>
 
-<h1>详情页</h1>
+<div class="container">
+    <h1 class="text-center"><%= articleInfo.title %>
+        <% if(isLogin && userInfo.id === articleInfo.authorId) { %>
+        <a href="#" class="btn btn-info pull-right">编辑</a>
+        <% } %>
+    </h1>
+    <hr>
+
+    <div>
+        <p><%- articleInfo.content %></p>
+    </div>
+</div>
 
 <%- include("../common/footer") %>
