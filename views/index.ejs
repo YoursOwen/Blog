@@ -1,5 +1,5 @@
 <%- include("./common/header.ejs")%>
-<!-- =表示纯文本渲染  -表示解析HTML标签后渲染,ejs这样的注释不会被解析,其他的会 -->  
+<!-- =表示纯文本渲染  -表示解析HTML标签后渲染,ejs这样的注释不会被解析,其他的会 -->
 
 <div class="list-group container" style="margin: 10px auto;">
     <% item.forEach(item =>{ %>
@@ -13,18 +13,39 @@
     </span>
     </a>
     <% }) %>
-    
-   
-      
-   
-    
+
+
+
+
+
   </div>
 
 
 
 
 <%- include("./common/footer.ejs")%>
-   
+
+<nav aria-label="Page navigation text-center">
+    <ul class="pagination">
+      <li>
+        <a href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="active"><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li>
+        <a href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+
 <script>
         $(function(){
             $("#addArticle").on("click",function(){
