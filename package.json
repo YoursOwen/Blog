@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/YoursOwen/Blog#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "bootstrap": "^3.3.7",
     "cookie-parser": "^1.4.3",
